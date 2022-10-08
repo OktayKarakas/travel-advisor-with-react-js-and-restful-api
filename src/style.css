@@ -1,0 +1,7 @@
+.Box {
+  display: flex;
+  flex-direction: row !important;
+}
+.search-input {
+  background-color: gray;
+}
