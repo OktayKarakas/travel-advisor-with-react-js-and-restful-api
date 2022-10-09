@@ -5,3 +5,14 @@
 .search-input {
   background-color: gray;
 }
+
+.container {
+  margin: 0px !important;
+}
+
+.searchBar {
+  border: 1px solid grey;
+  border-radius: 5px;
+  padding: 2px 23px 2px 30px;
+  outline: 0;
+}
