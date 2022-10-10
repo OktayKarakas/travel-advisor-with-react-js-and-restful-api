@@ -8,7 +8,7 @@ import './../../style.css'
 const Header = () => {
   const classes = useStyles()
   return (
-    <AppBar position="static">
+    <AppBar position="static" style={{ background: '#5D6D7E' }}>
       <div></div>
       <Toolbar className={classes.toolbar}>
         <Typography variant="h5" className={classes.title}>
@@ -23,6 +23,7 @@ const Header = () => {
             placeholder="Search..."
             classes={{ root: classes.inputRoot, input: classes.inputInput }}
             className="searchBar"
+            style={{ background: "rgba(225, 229, 225,0.5)",color:"rgba(0, 0, 0,1)",fontWeight:"bold"}}
           />
         </Box>
       </Toolbar>

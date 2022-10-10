@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState,useEffect,createRef } from 'react'
 import {
   CircularProgress,
   Grid,
@@ -15,11 +15,27 @@ const List = (props) => {
   const classes = useStyles()
   const [type, setType] = useState('restaurants')
   const [rating, setRating] = useState('')
+  const [elRefs,setElRefs] = useState([])
+
+
+  useEffect(() => {
+    const refs = Array(props.places?.length).fill().map((_,i) =>elRefs[i] || createRef())
+    setElRefs(refs)
+  },[props.places])
+
   return (
     <div className={classes.container}>
       <Typography variant="h4">
         Restaurants,Hotels & Attractions around you
       </Typography>
+      {props.isLoading ? (
+        <div className={classes.loading}> 
+
+        <CircularProgress size="5rem" />
+
+        </div>
+      ) : (
+        <>
       <FormControl className={classes.formControl}>
         <InputLabel>Type</InputLabel>
         <Select value={type} onChange={(e) => setType(e.target.value)}>
@@ -39,11 +55,17 @@ const List = (props) => {
       </FormControl>
       <Grid container spacing={3} className={classes.list}>
         {props.places?.map((item, i) => (
-          <Grid item key={i} xs={12}>
-            <PlaceDetails place={item} />
+          <Grid ref={elRefs[i]} item key={i} xs={12}>
+            <PlaceDetails place={item}
+            selected = {Number(props.childClicked) === i}
+            refProp = {elRefs[i]}
+            />
           </Grid>
         ))}
       </Grid>
+
+      </>
+      )}
     </div>
   )
 }
