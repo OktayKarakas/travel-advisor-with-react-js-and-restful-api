@@ -3,7 +3,8 @@ import { palette } from '@mui/system'
 
 export default makeStyles((theme) => ({
   title: {
-    display: 'none',
+    display: 'block',
+    fontSize: "1rem",
     [theme.breakpoints.up('sm')]: {
       display: 'block',
     },
